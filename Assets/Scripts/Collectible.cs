@@ -10,6 +10,10 @@ public abstract class Collectible : Interactable
     [SerializeField] private float collectDuration = 0.3f;
     [SerializeField] private float collectRise = 1.5f;
 
+    [Header("Pickup sparkle")]
+    [SerializeField] private GameObject sparklePrefab;
+    [SerializeField] private Color sparkleColor = Color.white;
+
     private Vector3 originalScale;
     private bool collecting;
 
@@ -37,11 +41,17 @@ public abstract class Collectible : Interactable
         transform.Rotate(0f, spinSpeed * deltaTime, 0f, Space.World);
     }
 
-    // Interactable demands this; Collectible answers it once for all pickups.
     protected override void OnPlayerContact(PlayerController player)
     {
         collecting = true;
         OnCollected(player);
+
+        if (sparklePrefab != null && PoolManager.Instance != null)
+        {
+            PickupSparkle sparkle = PoolManager.Instance.Get<PickupSparkle>(sparklePrefab, transform.position, Quaternion.identity);
+            if (sparkle != null) sparkle.Play(sparkleColor);
+        }
+
         StartCoroutine(CollectEffect());
     }
 

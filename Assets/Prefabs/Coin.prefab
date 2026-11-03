@@ -49,8 +49,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Coin
   despawnZ: -15
   spinSpeed: 120
+  collectSpinMultiplier: 4
   collectDuration: 0.25
   collectRise: 1.5
+  sparklePrefab: {fileID: 1876397647607357103, guid: 90e0a682cf24018889d423258e04be89, type: 3}
+  sparkleColor: {r: 1, g: 0.8235294, b: 0.12156863, a: 1}
   scoreValue: 10
 --- !u!54 &8807513691550171678
 Rigidbody:
