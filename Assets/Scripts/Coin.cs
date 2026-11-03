@@ -8,5 +8,7 @@ public class Coin : Collectible
     {
         if (GameManager.Instance != null)
             GameManager.Instance.AddScore(scoreValue);
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayCoin();
     }
 }

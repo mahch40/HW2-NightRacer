@@ -7,8 +7,9 @@ public class FuelCan : Collectible
     protected override void OnCollected(PlayerController player)
     {
         PlayerFuel fuel = player.GetComponent<PlayerFuel>();
-        if (fuel != null){
-            fuel.Refill(fuelAmount);
-        }
+        if (fuel != null) fuel.Refill(fuelAmount);
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayFuel();
     }
+    
 }
