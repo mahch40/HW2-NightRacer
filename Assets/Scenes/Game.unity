@@ -508,57 +508,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &737069198
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 737069200}
-  - component: {fileID: 737069199}
-  m_Layer: 0
-  m_Name: TestSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &737069199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737069198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6528d0f9b9e152f186a8c33ac3f38d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TestSpawner
-  prefabs:
-  - {fileID: 6363497060901216935, guid: 3e97cb4aeab7a528aad623823f88b0eb, type: 3}
-  - {fileID: 89446530625073589, guid: e977505d7c10ee76fba9b4a9adb11e87, type: 3}
-  - {fileID: 4697153895635967465, guid: a5cf80b4fb2f8623f94a9621902664b7, type: 3}
-  - {fileID: 7481341495587492657, guid: b6f5086cd2a61949ba3fc029e60af3d3, type: 3}
-  interval: 2
-  spawnZ: 100
---- !u!4 &737069200
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 737069198}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.37906, y: 0, z: 5.17781}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &783778603
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +707,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2, y: 0.6325443, z: 2.5597725}
   m_Center: {x: 0, y: 0.31627214, z: 0}
+--- !u!1 &1694593740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1694593742}
+  - component: {fileID: 1694593741}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1694593741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694593740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e3670e22ccd0c9cba6f1292ecfb613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Spawner
+  staticCarPrefab: {fileID: 89446530625073589, guid: e977505d7c10ee76fba9b4a9adb11e87, type: 3}
+  movingCarPrefab: {fileID: 6363497060901216935, guid: 3e97cb4aeab7a528aad623823f88b0eb, type: 3}
+  coinPrefab: {fileID: 4697153895635967465, guid: a5cf80b4fb2f8623f94a9621902664b7, type: 3}
+  fuelCanPrefab: {fileID: 7481341495587492657, guid: b6f5086cd2a61949ba3fc029e60af3d3, type: 3}
+  spawnZ: 100
+  rowSpacing: 18
+  obstacleChance: 0.7
+  movingCarChance: 0.35
+  doubleObstacleChance: 0.3
+  coinChance: 0.5
+  fuelChance: 0.06
+  minColumnLength: 1
+  maxColumnLength: 3
+--- !u!4 &1694593742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694593740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1712965558
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,11 +797,11 @@ MonoBehaviour:
   - prefab: {fileID: 1947238780233747015, guid: d2a8cf44c32c0a34a91e0d363ecc13ce, type: 3}
     prewarmCount: 8
   - prefab: {fileID: 89446530625073589, guid: e977505d7c10ee76fba9b4a9adb11e87, type: 3}
-    prewarmCount: 6
+    prewarmCount: 12
   - prefab: {fileID: 6363497060901216935, guid: 3e97cb4aeab7a528aad623823f88b0eb, type: 3}
-    prewarmCount: 6
+    prewarmCount: 10
   - prefab: {fileID: 4697153895635967465, guid: a5cf80b4fb2f8623f94a9621902664b7, type: 3}
-    prewarmCount: 15
+    prewarmCount: 20
   - prefab: {fileID: 7481341495587492657, guid: b6f5086cd2a61949ba3fc029e60af3d3, type: 3}
     prewarmCount: 6
 --- !u!4 &1712965560
@@ -823,4 +829,4 @@ SceneRoots:
   - {fileID: 1712965560}
   - {fileID: 783778605}
   - {fileID: 446584511}
-  - {fileID: 737069200}
+  - {fileID: 1694593742}

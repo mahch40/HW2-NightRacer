@@ -7,6 +7,7 @@ public class MovingCar : Interactable
     [SerializeField] private float maxOwnSpeed = 12f;
 
     private float ownSpeed;
+    public float OwnSpeed => ownSpeed;
 
     protected override void OnSpawn()
     {

@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingCar
   despawnZ: -15
-  minOwnSpeed: 6
-  maxOwnSpeed: 12
+  minOwnSpeed: 4
+  maxOwnSpeed: 8
 --- !u!1001 &2468231110751068141
 PrefabInstance:
   m_ObjectHideFlags: 0
