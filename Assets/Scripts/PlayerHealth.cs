@@ -50,13 +50,26 @@ public class PlayerHealth : MonoBehaviour
         if (cameraFollow != null)
             cameraFollow.Shake(shakeDuration, shakeMagnitude);
 
-        if (Lives <= 0) Die();
+        if (Lives <= 0) Die(true);
         else StartCoroutine(InvincibilityRoutine());
     }
-
-    private void Die()
+    // Used when the game ends for out of fuel or something
+    public void Kill()
     {
-        SetTint(true);
+        if (IsDead) return;
+
+        StopAllCoroutines();
+        IsInvincible = false;
+        SetTint(false);
+
+        Lives = 0;
+        OnLivesChanged?.Invoke(Lives);
+        Die(false);
+    }
+
+    private void Die(bool tint)
+    {
+        if (tint) SetTint(true);    
         GameSpeed.Current = 0f;    
 
         PlayerController controller = GetComponent<PlayerController>();
