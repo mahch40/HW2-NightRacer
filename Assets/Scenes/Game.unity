@@ -1156,6 +1156,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e7ac75190e0ee2b5b93a3ae6f095d3fe, type: 3}
   m_PrefabInstance: {fileID: 1228128469}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1468444818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1468444820}
+  - component: {fileID: 1468444819}
+  m_Layer: 0
+  m_Name: FireworkLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1468444819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468444818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f346d2107c7f49ff6bba7fa93f781cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireworkLauncher
+  fireworkPrefab: {fileID: 6908105696873465844, guid: 006931e1ce41226af9cd5de5a64d6e33, type: 3}
+  minInterval: 1.5
+  maxInterval: 4
+  minX: -60
+  maxX: 60
+  minZ: 80
+  maxZ: 130
+--- !u!4 &1468444820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468444818}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1474443163 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4819223349682164798, guid: e7ac75190e0ee2b5b93a3ae6f095d3fe, type: 3}
@@ -1418,6 +1469,8 @@ MonoBehaviour:
     prewarmCount: 20
   - prefab: {fileID: 7481341495587492657, guid: b6f5086cd2a61949ba3fc029e60af3d3, type: 3}
     prewarmCount: 6
+  - prefab: {fileID: 6908105696873465844, guid: 006931e1ce41226af9cd5de5a64d6e33, type: 3}
+    prewarmCount: 5
 --- !u!4 &1712965560
 Transform:
   m_ObjectHideFlags: 0
@@ -1573,3 +1626,4 @@ SceneRoots:
   - {fileID: 1694593742}
   - {fileID: 185940050}
   - {fileID: 1653832641}
+  - {fileID: 1468444820}
