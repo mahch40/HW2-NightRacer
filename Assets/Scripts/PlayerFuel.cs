@@ -15,6 +15,7 @@ public class PlayerFuel : MonoBehaviour
     public float MaxFuel => maxFuel;
     public float Normalized => Fuel / maxFuel;
     public bool IsLow => Normalized <= lowFuelThreshold;
+    public bool IsEmpty => empty;
 
     private PlayerHealth health;
     private bool empty;
