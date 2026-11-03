@@ -2,14 +2,16 @@ using System.Collections;
 using UnityEngine;
 
 // Shared behaviour for pickups (coins, fuel cans): they spin, and when collected
-// they shrink and rise before going back to the pool.
+// they stop scrolling and play a short shrink-and-rise effect in place.
 public abstract class Collectible : Interactable
 {
     [SerializeField] private float spinSpeed = 120f;
-    [SerializeField] private float collectDuration = 0.25f;
+    [SerializeField] private float collectSpinMultiplier = 4f;
+    [SerializeField] private float collectDuration = 0.3f;
     [SerializeField] private float collectRise = 1.5f;
 
     private Vector3 originalScale;
+    private bool collecting;
 
     private void Awake()
     {
@@ -19,11 +21,18 @@ public abstract class Collectible : Interactable
     protected override void OnSpawn()
     {
         base.OnSpawn();
+        collecting = false;
         transform.localScale = originalScale;   // undo the shrink from the last pickup
     }
 
     protected override void Tick(float deltaTime)
     {
+        if (collecting)
+        {
+            transform.Rotate(0f, spinSpeed * collectSpinMultiplier * deltaTime, 0f, Space.World);
+            return;
+        }
+
         base.Tick(deltaTime);   // keep scrolling with the road
         transform.Rotate(0f, spinSpeed * deltaTime, 0f, Space.World);
     }
@@ -31,6 +40,7 @@ public abstract class Collectible : Interactable
     // Interactable demands this; Collectible answers it once for all pickups.
     protected override void OnPlayerContact(PlayerController player)
     {
+        collecting = true;
         OnCollected(player);
         StartCoroutine(CollectEffect());
     }
