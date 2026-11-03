@@ -6,6 +6,7 @@ public class Coin : Collectible
 
     protected override void OnCollected(PlayerController player)
     {
-        Debug.Log($"Coin collected: +{scoreValue} score (GameManager comes in task 18)");
+        if (GameManager.Instance != null)
+            GameManager.Instance.AddScore(scoreValue);
     }
 }
