@@ -42,6 +42,11 @@ public class AudioManager : MonoBehaviour
     private float targetMusicVolume;
     private bool engineActive;
     private float engineLevel;
+    private const string MusicKey = "MusicOn";
+    private const string SfxKey = "SfxOn";
+
+    public bool MusicEnabled { get; private set; }
+    public bool SfxEnabled { get; private set; }
 
     private void Awake()
     {
@@ -51,6 +56,9 @@ public class AudioManager : MonoBehaviour
         engineSource.loop = true;
         engineSource.clip = engineClip;
         targetMusicVolume = musicVolume;
+        MusicEnabled = PlayerPrefs.GetInt(MusicKey, 1) == 1;
+        SfxEnabled = PlayerPrefs.GetInt(SfxKey, 1) == 1;
+        ApplyMute();
     }
 
     private IEnumerator Start()
@@ -158,5 +166,27 @@ public class AudioManager : MonoBehaviour
         if (clip == null) return;
         sfxSource.pitch = Random.Range(0.95f, 1.05f);   
         sfxSource.PlayOneShot(clip, sfxVolume * volume);
+    }
+    public void SetMusicEnabled(bool on)
+    {
+        MusicEnabled = on;
+        PlayerPrefs.SetInt(MusicKey, on ? 1 : 0);
+        PlayerPrefs.Save();
+        ApplyMute();
+    }
+
+    public void SetSfxEnabled(bool on)
+    {
+        SfxEnabled = on;
+        PlayerPrefs.SetInt(SfxKey, on ? 1 : 0);
+        PlayerPrefs.Save();
+        ApplyMute();
+    }
+
+    private void ApplyMute()
+    {
+        musicSource.mute = !MusicEnabled;
+        engineSource.mute = !SfxEnabled;   
+        sfxSource.mute = !SfxEnabled;
     }
 }
