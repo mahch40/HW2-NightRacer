@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
 
     public GameState State { get; private set; }
     public int Score => distanceScore + bonusScore;
+    public int HighScore => PlayerPrefs.GetInt("HighScore", 0);
 
     private GameInput input;
     private int distanceScore;
@@ -146,11 +147,5 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneIndex);
-    }
-
-    // TODO
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(10, 60, 400, 25), $"State: {State}   Score: {Score}");
     }
 }

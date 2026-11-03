@@ -48,10 +48,4 @@ public class PlayerFuel : MonoBehaviour
         Fuel = Mathf.Min(maxFuel, Fuel + amount);
         OnFuelChanged?.Invoke(Normalized);
     }
-
-    // TODO
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 300, 25), $"Fuel: {Fuel:0} / {maxFuel:0}");
-    }
 }

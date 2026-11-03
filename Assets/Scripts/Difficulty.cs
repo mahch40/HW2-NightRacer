@@ -50,11 +50,4 @@ public class Difficulty : MonoBehaviour
             spawner.ObstacleChance = Mathf.Lerp(startObstacleChance, maxObstacleChance, Level);
         }
     }
-
-    // TEMPORARY readout so we can test now. Removed when the HUD is built (task 28).
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(10, 35, 400, 25),
-            $"Speed: {GameSpeed.Current:0.0}   Level: {Level:0.00}   Distance: {Distance:0}");
-    }
 }
