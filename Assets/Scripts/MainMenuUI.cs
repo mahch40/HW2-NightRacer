@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 // Main menu: Start loads the game scene, Exit quits.
 public class MainMenuUI : MonoBehaviour
@@ -10,7 +11,14 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private float clickDelay = 0.2f;
 
     private bool busy;
+    [SerializeField] private TMP_Text bestText;
 
+    private void Start()
+    {
+        if (bestText != null)
+            bestText.text = $"BEST  {PlayerPrefs.GetInt("HighScore", 0)}";
+    }
+    
     public void OnStartClicked()
     {
         Run(() =>

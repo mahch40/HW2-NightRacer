@@ -64,11 +64,13 @@ public class GameOverUI : MonoBehaviour
         yield return new WaitForSecondsRealtime(showDelay);
 
         int score = GameManager.Instance.Score;
-        int best = Mathf.Max(GameManager.Instance.HighScore, score);
+        int best = GameManager.Instance.HighScore;   
+        bool record = GameManager.Instance.IsNewRecord;
 
         reasonText.text = (playerFuel != null && playerFuel.IsEmpty) ? "OUT OF FUEL" : "CRASHED";
         scoreText.text = $"SCORE  {score}";
-        bestText.text = $"BEST  {best}";
+        bestText.text = record ? $"NEW RECORD  {best}" : $"BEST  {best}";
+        bestText.color = record ? new Color32(0xFF, 0xD2, 0x1F, 255) : new Color32(0x9D, 0xB4, 0xFF, 255);
 
         panelGroup.alpha = 0f;
         panel.SetActive(true);

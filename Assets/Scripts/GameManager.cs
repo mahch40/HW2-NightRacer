@@ -25,7 +25,11 @@ public class GameManager : MonoBehaviour
 
     public GameState State { get; private set; }
     public int Score => distanceScore + bonusScore;
-    public int HighScore => PlayerPrefs.GetInt("HighScore", 0);
+    private const string HighScoreKey = "HighScore";
+
+    public int HighScore => PlayerPrefs.GetInt(HighScoreKey, 0);
+
+    public bool IsNewRecord { get; private set; }
 
     private GameInput input;
     private int distanceScore;
@@ -101,6 +105,7 @@ public class GameManager : MonoBehaviour
 
     private void HandlePlayerDied()
     {
+        SaveHighScore();
         SetState(GameState.GameOver);
     }
 
@@ -138,6 +143,7 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Restart")]
     public void Restart()
     {
+        SaveHighScore();
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -145,7 +151,28 @@ public class GameManager : MonoBehaviour
     [ContextMenu("Go To Main Menu")]
     public void GoToMainMenu()
     {
+        SaveHighScore();
         Time.timeScale = 1f;
         SceneManager.LoadScene(mainMenuSceneIndex);
     }
+
+    public void SaveHighScore()
+    {
+        if (Score > HighScore)
+        {
+            PlayerPrefs.SetInt(HighScoreKey, Score);
+            PlayerPrefs.Save();   
+            IsNewRecord = true;
+        }
+    }
+
+    [ContextMenu("Reset High Score")]
+    private void ResetHighScore()
+    {
+        PlayerPrefs.DeleteKey(HighScoreKey);
+        PlayerPrefs.Save();
+        IsNewRecord = false;
+        Debug.Log("High score reset");
+    }
+
 }
