@@ -23,8 +23,15 @@ public class MainMenuUI : MonoBehaviour
     {
         Run(() =>
         {
-            Time.timeScale = 1f;
-            SceneManager.LoadScene(gameSceneIndex);
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.StartGame();
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                SceneManager.LoadScene(gameSceneIndex);
+            }
         });
     }
 

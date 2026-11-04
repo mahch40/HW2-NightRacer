@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameState initialState = GameState.Playing;
     [SerializeField] private float scorePerUnitDistance = 0.1f;
     [SerializeField] private int mainMenuSceneIndex = 0;
+    [SerializeField] private int gameSceneIndex = 1;
 
     public event Action<GameState> OnStateChanged;
     public event Action<int> OnScoreChanged;
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
     {
         State = newState;
         Time.timeScale = newState == GameState.Paused ? 0f : 1f;
+        // Debug.Log($"[GameManager] State: {newState}");
         OnStateChanged?.Invoke(newState);
     }
 
@@ -139,6 +141,11 @@ public class GameManager : MonoBehaviour
         OnScoreChanged?.Invoke(Score);
     }
 
+    public void StartGame()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(gameSceneIndex);
+    }
 
     [ContextMenu("Restart")]
     public void Restart()
